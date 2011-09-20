@@ -1,0 +1,53 @@
+proxytunnel (1.7.0-1) unstable; urgency=high
+
+  * New upstream version
+
+ -- Mark Janssen <maniac@maniac.nl>  Mon, 19 Mar 2007 13:50:32 +0100
+
+proxytunnel (1.5.2-1) unstable; urgency=high
+
+  * New version
+  * NTLM Cleanups, removed md[45] code in favour of using libssl
+
+ -- Mark Janssen <maniac@maniac.nl>  Fri, 16 Dec 2005 10:00:00 +0200
+
+proxytunnel (1.5.0-1) unstable; urgency=high
+
+  * New version
+  * NTLM support
+
+ -- Mark Janssen <maniac@maniac.nl>  Mon, 15 Aug 2005 12:24:00 +0200
+
+proxytunnel (1.2.3-1) unstable; urgency=high
+
+  * Added security-patch from gentoo security team, fix buffer overflow
+
+ -- Mark Janssen <maniac@maniac.nl>  Wed, 20 Nov 2002 15:12:10 +0200
+
+proxytunnel (1.2.0-1) unstable; urgency=low
+
+  * Added patch by Fred Donck <fd0 at donck dot com> to store proxy username
+    and password in environment variables.
+
+ -- Mark Janssen <maniac@maniac.nl>  Thu Sep 30 11:22:03 CEST 2004
+
+proxytunnel (1.1.2-1) unstable; urgency=low
+
+  * More cleaning up, added manpage.
+  * Added patches/suggestions by Loïc Le Guyader <loic.leguyader@laposte.net>
+
+ -- Mark Janssen <maniac@maniac.nl>  Wed, 20 Nov 2002 15:12:10 +0200
+
+proxytunnel (1.1-2) unstable; urgency=low
+
+  * Some more cleaning up build-environment
+  * Added Suggests: ssh
+
+ -- Mark Janssen <maniac@maniac.nl>  Wed,  4 Sep 2002 14:46:20 +0200
+
+proxytunnel (1.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Mark Janssen <maniac@maniac.nl>  Wed,  4 Sep 2002 13:55:15 +0200
+
