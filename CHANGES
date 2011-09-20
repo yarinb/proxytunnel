@@ -1,0 +1,257 @@
+Changes to proxytunnel after 1.9.0 -- Unreleased
+
+- Switch to HTTP/1.1 commands, so we can tunnel over JoikuSpot's which
+  don't understand http/1.0 command (Mark Janssen)
+
+Changes to proxytunnel version 1.9.0 -- Sat Feb 23 22:03:10 CET 2008
+
+- Fixes for runtime error on RHEL5/CENTOS-5 (gcc4 and -D_FORTIFY_SOURCE=2) (Dag Wieers)
+- Small thinko in io.c wrt. malloc() (Dag Wieers)
+- Disable output by default on Windows build (Dag Wieers)
+- Updated SPEC file to RPMforge standards (Dag Wieers)
+- Improved verbose output, easier for the eyes (Dag Wieers)
+- Improved help output (Dag Wieers)
+- Added basic authentication support for remote proxy (Mark)
+- Removed custom environment variables, now use PROXYUSER, PROXYPASS (Dag Wieers)
+- Replaced -U/--user and -S/--pass by -P/--proxyauth (Dag Wieers)
+- Added remote proxy authentication (-R/--remproxyauth) (Dag Wieers)
+- Use REMPROXYUSER and REMPROXYPASS environment variables (Dag Wieers)
+- Pick up proxy settings from HTTP_PROXY env var (Mark)
+- Remote Proxy SSL (-X --encrypt-remproxy) (Mark)
+
+Changes to proxytunnel version 1.8.0 -- Mon Dec 31 16:46:52 CET 2007
+
+- Added passfile options to read username/password from a file
+- Moved manual-page from debian/ to / in source-tree
+- Cleanup quiet mode, quiet/verbose mutually exclusive (fd0)
+- Performance patch from Ingo Molnar
+- This release was prepared at 24C3, Berlin
+  (http://events.ccc.de/congress/2007/)
+- Have a nice year, or as they say here:
+  "Einen guten Rutsch ins 1984"
+
+Changes to proxytunnel version 1.7.2 -- Mon Jul 30 10:18:26 CEST 2007
+
+- Fixed buffer/malloc issue
+- Clean-up usage info/help text
+- Remove spurious syslog
+
+Changes to proxytunnel version 1.7.1 -- Thu Apr 12 13:40:27 CEST 2007
+
+- Cygwin SO_REUSEPORT stuff by Marc Heuse
+- Fix some string-handling related core-dumps
+- NTLM/SSL fixes by Taco IJsselmuiden <taco@varda.nl>
+- NTLM fixes by Taco IJsselmuiden <taco@varda.nl>
+
+Changes to proxytunnel version 1.7.0 -- Sun Feb 25 17:45:38 CET 2007
+
+- Allow multiple '-H' options (headers), total size of the headers
+  should not exceed 1k.
+- Reworked setproctitle calls, giving an argument to -x should now
+  really hide all traces of the original name, not only the arguments
+  Also remove argument-info on normal (without -x) runs.
+- Suggested changes (From Dag Wieers) to install-target applied 
+- Change debug-output line-endings
+- Change error message on 'connection closed' in analyze_HTTP
+- Reworked debug-output (Dag Wieers)
+- Signal handling (Dag Wieers)
+- Applied (reworked) changes from Mark Cave-Ayland to support -E option
+  encrypting data to the proxy with SSL
+
+Changes to proxytunnel version 1.6.3 -- Mon Apr 10 12:48:02 CEST 2006
+
+- Replaced call to getpass to getpass_x, which comes from openssh's
+  readpassphrase.c. This should handle longer passwords on systems
+  with broken (crappy) getpass calls (solaris/hpux)
+
+Changes to proxytunnel version 1.6.2 -- Wed Mar  8 10:08:53 CET 2006
+
+- Fix NTLM in stand-alone mode
+
+Changes to proxytunnel version 1.6.1 -- Sat Feb 25 14:45:25 CET 2006
+
+- FOSDEM build (www.fosdem.org)
+- Do setproctitle and ssl stuff on 'standalone' mode too
+- Changed scanning/malloc's for proxy-hostname, we could overflow there
+- Ripped out setproctitle and replaced it with openssh's code from
+  openbsd-compat/setproctitle.c, also took in strlcat/strlcpy
+- Removed all non-default Makefiles (darwin/solaris/cygwin etc)
+  uncomment the -D's in the regular Makefile for your system/config
+- Removed extra message in closeall() function
+- Removed Proctitle override message
+
+Changes to proxytunnel version 1.6.0 -- Mon Feb  6 17:00:00 CET 2006
+
+- Replaced -g/-G (proxy host and port) with -p proxy:post shorthand
+- Replaced -d/-D (dest host and port) with -d host:post shorthand
+- Dropped -n option (dottedquad)
+- Small change to make compiler on tandem/hp-nonstop happy
+  by Roberto Veldhoven
+- Small change to work around broken proxies by Stephane Engel
+- Changed client_len from size_t to socklen_t (64bit required)
+- Makefile vars now no longer override environment versions
+- Cleaned up the output, in quiet mode there are now no messages, in
+  normal mode a lot less (unless verbose is on)
+- Added proxy-bouncing support, courtesy of Dag Wieers, authentication
+  only works on the FIRST proxy, not on a second proxy !!
+- Added SSL encryption to the data-layer to fool proxies that do deep-
+  packet inspection, by: Alex Peuchert proxytunnel@peuchert.de
+- Added -x/--proctitle option, to hide/obfuscate the proxytunnel
+  command-line in process-listings. This code is disabled by default
+  But can be enabled by uncommenting the define in the Makefile.
+  Please test this code on systems available to you :)
+
+Changes to proxytunnel version 1.5.2 -- Fri Dec 16 09:27:11 CET 2005
+
+- Moved some declarations around in ntlm.c to make gcc/openbsd happier
+
+Changes to proxytunnel version 1.5.1 -- Fri Sep 30 12:17:14 CEST 2005
+
+- If you specify a username, but not a password, query the user for
+  the password at runtime.
+- Removed md[45].[ch] and use functions from openssl
+
+Changes to proxytunnel version 1.5.0 -- Mon Aug 15 12:18:41 CEST 2005
+
+- Allow overriding of NTLM 'DOMAIN', using -t
+
+Changes to proxytunnel version 1.4.0 -- Mon Aug 15 11:40:18 CEST 2005
+
+- Included version-2 of the NTLM patch by Paul Solomon
+
+Changes to proxytunnel version 1.2.3 -- Tue Nov  2 17:03:00 CET 2004
+
+- Patched a possible buffer overflow as reported by Dan Margolis 
+  <krispykringle at gentoo dot org> of the Gentoo Security Team
+
+Changes to proxytunnel version 1.2.2 -- Tue Oct 12 16:43:16 CEST 2004
+
+- Added patch from Fred Donck to fix his previous patch, after testing at
+  a client with authenticating proxies he found a small problem.
+
+Changes to proxytunnel version 1.2.1 -- Fri Oct  1 08:50:03 CEST 2004
+
+- Added patch by drwr that fixes some compiler warnings and introduces
+  Makefile.cc for non-gnu compilers
+
+Changes to proxytunnel version 1.2.0 -- Thu Sep 30 11:22:03 CEST 2004
+
+- Added patch by Fred Donck <fd0 at donck dot com> to store proxy username
+  and password in environment variables.
+
+  Security fix
+  ------------
+
+  - Modified cmdline.c to allow passing of proxyuser and proxypass as
+    environment variables to prevent other users on same machine from
+    snooping sensitive info.
+    -U for env var that contains the proxy user
+    -S for env var that contains the proxy user's password
+
+Changes to proxytunnel version 1.1.4 -- Wed Jun 23 21:05:35 CEST 2004
+
+- Small solaris fix
+
+Changes to proxytunnel version 1.1.3 -- Tue Dec 02 14:00:00 CET 2003
+
+- Fix small compilation warning
+- Install proxytunnel manual page on 'make install'
+
+Changes to proxytunnel version 1.1.2 -- Wed Nov 20 14:45:00 CET 2002
+
+- Cleaned up debian packaging, added manpage from Loïc Le Guyader
+  <loic.leguyader@laposte.net>
+
+Changes to proxytunnel version 1.1.1 -- Tue May 14 12:09:07 CEST 2002
+
+- Added a reworked version of Dieter Heiliger's idea to add a switch to
+  specify a User-Agent header to the CONNECT message. I made it into a
+  generic 'Header' function, so you can add whatever you like to the
+  connect string ( --header "MyCustomHeader: Value" )
+
+Changes to proxytunnel version 1.1.0 -- Mon Apr 22 22:58:05 CEST 2002
+
+- Ported new features (like stand-alone mode) to CYGWIN and fixed some
+  bugs when running on CYGWIN. The cygwin version differs from the normal
+  proxytunnel in these issues:
+   - Syslog isn't used, messages in stand-alone mode are displayed
+     in the window where the proxytunnel proces runs.
+   - Proxytunnel doesn't fork into the background on cygwin, so it's
+     logging messages can be seen here, and it can easily be killed
+     using CTRL-C in the window.
+
+- Added Makefile.cygwin for use on CYGWIN platform.
+
+Changes to proxytunnel version 1.1.0 -- Sat Apr 20 16:00:00 CET 2002
+
+- Added the -a (--standalone=INT) option. It is mutually exclusive with
+  -i (--inetd), and it instructs proxytunnel to fork in the background
+  as a standalone daemon, listening on connections on the specified
+  port and forwarding these connections through the specified
+  proxy/tunnel.
+
+- Forked base64 encoding code to base64.[ch] file, authentication to
+  basicauth.[ch], messaging to messages.c and io handling to io.[ch]
+
+- Tested and ported on Linux(i386/ppc/alpha/sparc), Freebsd(i386),
+  Solaris(Sparc) and Mac-OS-X(Darwin/ppc). Created some new makefiles
+  for the non-complient systems (Solaris, Darwin)
+
+Changes to proxytunnel version 1.0.8 -- Fri Apr 19 10:25:00 CET 2002
+
+- Fixed help-text when system doesn't support long-options
+- Cleaned up some code w.r.t short and/or long options, added includes
+  for getopt on freebsd.
+
+Changes to proxytunnel version 1.0.7 -- Wed Nov 28 09:49:41 CET 2001
+
+- Added rpm spec file by Ralph Loader <suckfish@ihug.co.nz> -- Maniac
+- Updated textfiles
+
+Changes to proxytunnel version 1.0.7 -- Sat Nov 24 12:32:02 CET 2001
+
+- Applied patch from "Andrew Griffiths" <nullptr@tasmail.com> to fix
+  possible string format attacks. -- Maniac
+- Some code cleanup and reformatting -- Maniac
+- Added '-q' / '--quiet' flag to suppress status messages, Proxytunnel
+  can now be completely quiet and transparent. (Not when also providing
+  the '-v' flag naturally) -- Maniac
+- Changed ipbuf size to 16, which should be enough. -- Maniac
+
+Changes to proxytunnel version 1.0.6 -- Thu Nov 22 10:38:10 CET 2001
+
+- Added support for compiling on Solaris, uncomment some lines in the
+  Makefile to enable this, patch from: Martin Senft <martin@illicon.de>
+- Included (modified) patch from Ralph Loader <suckfish@ihug.co.nz> to
+  work around broken DNS resolving in some proxies when using DynDNS
+  hosts (the -n or --dottedquad option) -- Maniac
+
+Changes to proxytunnel version 1.0.5 -- Mon Nov 19 21:26:45 CET 2001
+
+- Added support for running from inetd, using the --inetd option or
+  the -i option. Also some cleanups in the tunneling code -- Muppet
+
+Changes to proxytunnel version 1.0.4 -- Sun Nov 11 00:44:39 CET 2001
+
+- All the code by Jos and Mark now covered under GPL, the few lines of
+  base64 code came from mutt (also GPL), so the entire program is now
+  covered by the GPL -- Maniac
+
+Changes to proxytunnel version 1.0.3 -- Sat Nov 10 21:36:42 CET 2001
+
+- Supporting GNU getopts, the entire command line processing has
+  changed. If you were using an old version, please check up on the
+  '--help' option, and update your .ssh/config files :) -- Maniac
+
+- Added a --verbose option, which occasionally can print some
+  interesting details -- Maniac
+
+- Due to getopts, some error handling when entering incorrect command
+  line options -- Maniac
+
+- In addition to using HTTP auth, which we already had, we can now also
+  connect to proxy's that do NOT use HTTP auth, simply do not specify a
+  username and password. If you specify these, they will be passed on to
+  the proxy, otherwise we won't go into auth phase. -- Maniac
+
+- Added simple 'make install' to the makefile -- Maniac

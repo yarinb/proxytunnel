@@ -1,0 +1,40 @@
+### Proxy bouncing support
+- Add multi-level proxy bouncing support with new syntax
+  eg. proxytunnel -p local-proxy:port -r remote-proxy1:port -r remote-proxy2:port -d %h:%p
+
+- Add proxy bouncing authentication support with new syntax
+  eg. proxytunnel -p user@local-proxy:port -r user@remote-proxy:port -d %h:%p
+  or: proxytunnel -p username:password@local-proxy:port -r username:password@remote-proxy:port -d %h:%p
+
+
+### SSL proxy support
+- Lobby for the Apache project to allow CONNECT over SSL (much like GET,
+  PUT and HEAD is supported over SSL)
+  see: http://issues.apache.org/bugzilla/show_bug.cgi?id=29744
+
+
+### Code cleanup
+- Fix permissions in subversion tree (some files are wrongly executable)
+
+- Find some hardcore C experts to help us improve the code quality
+
+- Improve the error output, make it consistent throughout the program
+
+- Add different verbosity-levels (with or without data exchange)
+
+- Get rid of the "ssh_exchange_identification: Connection closed by remote host"
+  message when proxytunnel fails to set up tunnel. proxytunnel should give a
+  sensible cause instead of the weird ssh error.
+  (Users need to understand that proxytunnel fails, not ssh itself)
+
+
+### Add default test-cases
+- Before releasing proxytunnel, we should validate the different error-cases
+  + local proxy does not exist (unresolvable)
+  + local proxy exists but does not answer (tcp timeout)
+  + local proxy does not talk HTTP
+  + local proxy is not a proxy (does not accept CONNECT)
+  o remote proxy does not exist (unresolvable)
+  o remote proxy exists but does not answer (tcp-timeout)
+  + remote proxy does not talk HTTP
+  + remote proxy is not a proxy (does not accept CONNECT)

@@ -1,0 +1,29 @@
+Proxytunnel was made possible due to help and support from the following
+people.
+
+	Jos Visser <josv@osp.nl>	- Initial coder and developer
+	  a.k.a. The Muppet
+	Mark Janssen <maniac@maniac.nl>	- Maintainer / Developer
+	  a.k.a. Maniac
+
+	Ralph Loader <suckfish@ihug.co.nz>	- Broken DNS w/ DynDNS
+						  patch, rpm Spec file
+	Martin Senft <martin@illicon.de>	- Solaris patches
+	Andrew Griffiths <nullptr@tasmail.com>	- String format fixes
+	Dieter Heiliger <dieter.heiliger@gmx.de>- User-agent header idea
+	Fred Donck <fd0@donck.com>		- User/Pass Env Vars
+	Leigh.Wedding @ telstra.com		- User/Pass from file
+	Paul Solomon <psolomon@tpg.com.au>	- NTLM support
+	Joerg Wunsch <j@uriah.heep.sax.de>	- Password prompt suggestion
+	Roberto Veldhoven at atosorigin.com	- Tandem compile fix
+	Stephane Engel at macchiati.org		- Fix for broken proxy
+	Mike Frysinger <vapier@gentoo.org>	- Makefile fix, 64bit fix
+	Dag Wieers <dag@wieers.com>		- Remote proxy support, various other
+	Alex Peuchert proxytunnel@peuchert.de	- SSL/Encrypt support
+	Mark.Cave-Ayland @ ilande.co.uk		- SSL to Proxy, Streams
+	Ingo Molnar <mingo@elte.hu>		- Interactivity improvement
+
+Furthermore we would like to thank the wonderful people at SourceForge
+for hosting our development.
+
+		Jos Visser && Mark Janssen
